@@ -55,6 +55,8 @@ de classificação de um dia propício para jogar tênis apresentado anteriormen
 O algoritmo processa o conjunto de treinamento para criar uma árvore consistente
 com os exemplos, que possui o conhecimento para classificar novas entradas.
 
+\pagebreak
+
 Table: Dados de treinamento para o problema de classificação de um dia propício
 para jogar tênis
 
