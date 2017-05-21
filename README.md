@@ -1,12 +1,12 @@
 # Notas de Aula - Inteligência Artificial
 
-Esse repositório contém notas de aula sobre Inteligência Artificial escritas por Yuri Malheiros.
+Esse repositório contém notas de aula sobre Inteligência Artificial escritas por [Yuri Malheiros](http://yurimalheiros.me/).
 
 Os seguintes assuntos podem ser encontrados aqui:
 
-- Resolução de problemas
-- Planejamento
-- Árvores de decisão
+- [Resolução de problemas](https://github.com/yurimalheiros/ianotes/blob/master/resolucao-de-problemas/resolucao-de-problemas.pdf)
+- [Planejamento](https://github.com/yurimalheiros/ianotes/blob/master/planejamento/planejamento.pdf)
+- [Árvores de decisão](https://github.com/yurimalheiros/ianotes/blob/master/arvores-de-decisao/arvoresdedecisao.pdf)
 
 ## Detalhes técnicos
 
