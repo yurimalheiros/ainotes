@@ -7,6 +7,7 @@ Os seguintes assuntos podem ser encontrados aqui:
 - [Resolução de problemas](https://github.com/yurimalheiros/ianotes/blob/master/resolucao-de-problemas/resolucao-de-problemas.pdf)
 - [Planejamento](https://github.com/yurimalheiros/ianotes/blob/master/planejamento/planejamento.pdf)
 - [Árvores de decisão](https://github.com/yurimalheiros/ianotes/blob/master/arvores-de-decisao/arvoresdedecisao.pdf)
+- [Aprendizagem de máquina - primeiros passos](https://github.com/yurimalheiros/ianotes/blob/master/aprendizagem-de-maquina/aprendizagemdemaquina.pdf)
 
 ## Detalhes técnicos
 
