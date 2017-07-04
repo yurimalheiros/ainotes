@@ -2,7 +2,7 @@
 % Yuri Malheiros
 % UFPB - Campus IV - Rio Tinto
 
-# Aprendizagem de máquina - Primeiros passos
+# Aprendizagem de máquina - Primeiros passos e regressão linear
 
 ## 1. Introdução
 
@@ -28,7 +28,7 @@ voz, diagnóstico médico, detecção de fraude, entendimento de textos e tradu�
 ## 2. Definições
 
 <!-- exemplo -->
-Para entender algumas definições básicas vamos seguir um exemplo. Suponha que
+Para entender algumas definições básicas, vamos seguir um exemplo. Suponha que
 coletamos dados sobre o preço de casas. Para cada casa temos três valores: o
 tamanho da casa, a quantidade de quartos e o preço. Nosso objetivo é conseguir,
 dado o tamanho e a quantidade de quartos, saber o preço de uma casa que não
@@ -37,10 +37,14 @@ está nos dados iniciais coletados.
 <!-- notações definir variável de saída (rótulo) e variáveis de entrada (caracteristicas) -->
 Nesse exemplo, o tamanho da casa e a quantidade de quartos são as **variáveis de
 entrada**, também chamadas de **características**. Elas são tipicamente representadas
-por $X_n$. Assim, podemos definir que $X_1$ é o tamanho da casa e $X_2$ é a
-quantidade de quartos. O vetor com todas as variáveis de entrada de uma casa é
-representado pela letra $X$. O preço da casa é uma **variável de saída**, também
-chamada de **resposta** ou **rótulo** em alguns casos, ela é representada por $Y$.
+por $x_j$. Assim, podemos definir que $x_1$ é o tamanho da casa e $x_2$ é a
+quantidade de quartos. 
+Para denotar uma característica de uma casa específica usaremos $x_j^{(i)}$,
+onde $i$ representa a i-ésima casa dos dados. Assim, por exemplo, $x_1^{(1)}$ é o tamanho
+da primeira casa e  $x_2^{(3)}$ é a quantidade de quartos da terceira casa.
+O vetor com todas as variáveis de entrada de uma casa é representado por $x^{(i)}$.
+O preço da casa é uma **variável de saída**, também
+chamada de **resposta** ou **rótulo** em alguns casos, ela é representada por $y^{(i)}$.
 
 A Figura 1 mostra, para um conjunto de dados coletados, a relação entre o
 tamanho da casa e o preço e também entre a quantidade de quartos e o preço.
@@ -51,19 +55,19 @@ tamanho da casa e o preço e também entre a quantidade de quartos e o preço.
 Dadas as características e a variável de saída, nós assumimos que existe uma
 relação entre elas que pode ser descrita através de uma função:
 
-$$Y = f(X)$$
+$$y^{(i)} = f(x^{(i)})$$
 
 Ou seja, a função recebe como entrada as características e tem como resultado a
 variável de saída. Usando os dados dos preços das casas, a função receberia
 como entrada o tamanho de uma casa e a quantidade de quartos e retornaria o preço
 dessa casa.
 
-Utilizando algoritmos de aprendizagem de máquina vamos encontrar uma função $\hat{f}$
-que é uma estimativa de $f$, ou seja, $Y \approx \hat{f}(X)$.
+Utilizando algoritmos de aprendizagem de máquina encontraremos uma função $\hat{f}$
+que é uma estimativa de $f$, ou seja, $y^{(i)} \approx \hat{f}(x^{(i)})$.
 Para isso, precisamos de um conjunto de exemplos, cada um
 representado por um vetor de características. Esses exemplos são chamados de
-**dados de treinamento**, pois vamos usá-los para ensinar o algoritmo a estimar
-$f$. Em outras palavras, o algoritmo vai ganhar experiência observando os dados
+**dados de treinamento**, pois são usados para ensinar o algoritmo a estimar
+$f$. Em outras palavras, o algoritmo ganhará experiência observando os dados
 de treinamento para executar uma tarefa.
 
 
@@ -85,7 +89,7 @@ Na **aprendizagem não supervisionada** cada exemplo nos dados de treinamento é
 composto apenas pelo vetor de características, ou seja, não existe uma
 resposta. Num problema desse tipo, a solução é procurar entender a relação
 entre os exemplos e suas características. Um problema comum de aprendizagem não
-supervisionada é o agrupamento (clusterização), no qual dado um exemplo $X$, a resposta é
+supervisionada é o agrupamento (clusterização), no qual dado um exemplo $x^{(i)}$, a resposta é
 atribuir o exemplo a um grupo. Por exemplo, uma rede de supermercados pode
 analisar os tipos de clientes que tem de acordo com suas compras e
 características pessoais (idade, sexo, salário, etc.), dessa forma, usando
@@ -124,31 +128,31 @@ resolver um problema.
 Para regressão, a medida mais comum utilizada para avaliar um modelo é o **erro
 médio quadrático**. Ele pode ser calculado da seguinte forma:
 
-$$\frac{1}{n} \sum_{i=1}^{n} (\hat{f}(x_i) - y_i)^2$$
+$$\frac{1}{n} \sum_{i=1}^{n} (\hat{f}(x^{(i)}) - y^{(i)})^2$$
 
-Onde $n$ é a quantidade de exemplos dos dados de treinamento, $\hat{f}(x_i)$ é
+Onde $n$ é a quantidade de exemplos dos dados de treinamento, $\hat{f}(x^{(i)})$ é
 a predição realizada pela função estimada $\hat{f}$ para o vetor de
-características do $i$-ésimo exemplo e $y_i$ é a resposta real para o vetor de
-características $x_i$.
+características do $i$-ésimo exemplo e $y^{(i)}$ é a resposta real para o vetor de
+características $x^{(i)}$.
 
-Analisando o somatório, temos que $(\hat{f}(x_i) - y_i)$ mede a distância entre
-um ponto e a curva da função, já que $y_i$ é o valor do ponto no eixo Y e
-$\hat{f}(x_i)$ é o valor estimado. A diferença é elevada ao quadrado
+Analisando o somatório, temos que $(\hat{f}(x^{(i)}) - y^{(i)})$ mede a distância entre
+um ponto e a curva da função, já que $y^{(i)}$ é o valor do ponto no eixo Y e
+$\hat{f}(x^{(i)})$ é o valor estimado. A diferença é elevada ao quadrado
 para que as distâncias sejam sempre positivas, não fazendo diferença se o ponto
 está acima ou abaixo da curva de $\hat{f}$.
 
 Para entender melhor, veja a Figura 2, ela mostra três pontos e uma reta que
 tenta se ajustar a eles. As linhas em vermelho representam as distâncias entre os
 pontos e a reta.  Da esquerda para direita, o primeiro ponto tem valor 3 na
-coordenada Y, mas $\hat{f}(x_1) = 1$, assim o valor da diferença é
-$(\hat{f}(x_1) - y_1) = -2$. Para os pontos seguintes as diferenças são:
-$(\hat{f}(x_2) - y_2) = 1$ e $(\hat{f}(x_3) - y_3) = -1$.
+coordenada Y, mas $\hat{f}(x^{(1)}) = 1$, assim o valor da diferença é
+$(\hat{f}(x^{(1)}) - y^{(1)}) = -2$. Para os pontos seguintes as diferenças são:
+$(\hat{f}(x^{(2)}) - y^{(2)}) = 1$ e $(\hat{f}(x^{(3)}) - y^{(3)}) = -1$.
 
 ![Gráfico mostrando as distâncias entre pontos e uma reta.](diferencas.png){ width=65% }
 
 Se as respostas previstas por $\hat{f}$ forem muito próximas das respostas
-reais, então os valores das diferenças $(\hat{f}(x_i) - y_i)$ serão pequenos,
-portanto o erro quadrático médio também será pequeno. Caso contrário, o valor
+reais, então os valores das diferenças $(\hat{f}(x^{(i)}) - y^{(i)})$ serão pequenos,
+portanto, o erro quadrático médio também será pequeno. Caso contrário, o valor
 do erro médio quadrático será alto. Assim, quanto menor o erro médio quadrático,
 mais ajustada a curva é aos dados, portanto, melhor a função descreve os dados.
 
@@ -250,7 +254,7 @@ seja, a reta que minimiza o erro médio quadrático.
 Entretanto, na nossa abordagem para encontrar a função da reta, vamos fazer uma
 pequena modificação no cálculo do erro médio quadrático, a formula usada será: 
 
-$$\frac{1}{2n} \sum_{i=1}^{n} (f(X_i) - y_i)^2$$
+$$\frac{1}{2n} \sum_{i=1}^{n} (f(x^{(i)}) - y^{(i)})^2$$
 
 Perceba que o somatório agora é dividido por $2n$. O número 2 aparece para
 facilitar cálculos que serão realizados em passos seguintes. Além disso, uma
@@ -260,11 +264,11 @@ valor dividido por $n$, assim essa modificação não causará problemas.
 Para regressão linear com uma variável podemos escrever o somatório anterior
 como uma função de $w_0$ e $w_1$ da seguinte forma:
 
-$$J(w_0, w_1) = \frac{1}{2n} \sum_{i=1}^{n} (w_1x + w_0 - y_i)^2$$
+$$J(w_0, w_1) = \frac{1}{2n} \sum_{i=1}^{n} (w_1x + w_0 - y^{(i)})^2$$
 
 Com isso, um algoritmo de regressão linear com uma variável pode ser resumido a
 um algoritmo que minimiza a função $J(w_0, w_1)$. Existem diferentes formas
-para encontrar o valor mínimo dessa função, aqui vamos utilizar o **algoritmo da
+para encontrar o valor mínimo dessa função, aqui utilizaremos o **algoritmo da
 descida de gradiente**.
 
 <!-- descida de gradiente -->
@@ -294,12 +298,12 @@ pode demorar a convergir, se $\alpha$ for um valor alto os ajustes podem ser
 grandes de uma forma que o algoritmo nunca consiga convergir.
 
 Para descobrir a direção que $w_0$ e $w_1$ devem ser ajustados em cada passo
-para diminuir o valor de $J(w_0, w_1)$ vamos calcular o gradiente da função, ou
-seja, vamos calcular as derivadas parciais de $J(w_0, w_1)$ como apresentado a
+para diminuir o valor de $J(w_0, w_1)$ calcularemos o gradiente da função, ou
+seja, as derivadas parciais de $J(w_0, w_1)$ como apresentado a
 seguir:
 
-$$\frac{\partial}{\partial w_0} J(w_0, w_1) = \frac{1}{n} \sum_{i=1}^{n} (f(x_i) - y_i)$$
-$$\frac{\partial}{\partial w_1} J(w_0, w_1) = \frac{1}{n} \sum_{i=1}^{n} ((f(x_i) - y_i)x_i)$$
+$$\frac{\partial}{\partial w_0} J(w_0, w_1) = \frac{1}{n} \sum_{i=1}^{n} (f(x^{(i)}) - y^{(i)})$$
+$$\frac{\partial}{\partial w_1} J(w_0, w_1) = \frac{1}{n} \sum_{i=1}^{n} ((f(x^{(i)}) - y^{(i)})x^{(i)})$$
 
 Com isso, o algoritmo precisa apenas repetir até a condição de parada os seguintes passos:
 
@@ -322,7 +326,7 @@ Utilizando os dados do tamanho das casas e dos preços, vamos executar o algorit
 e analisar a evolução da reta e do valor do erro médio quadrático ao longo das iterações.
 
 Iniciando o algoritmo, os valores dos coeficientes $w_0$ e $w_1$ precisam ser gerados aleatoriamente.
-Nesse exemplo, vamos começar com $w_0 = 1.9416$ e $w_1 = 0.7080$. O erro médio quadrático para esses
+Nesse exemplo, o algoritmo começa com $w_0 = 1.9416$ e $w_1 = 0.7080$. O erro médio quadrático para esses
 coeficientes é 519.7318.
 
 A seguir são mostrados os valores de $w_0$, $w_1$, e do erro médio quadrático,
@@ -367,6 +371,115 @@ atualizados dos coeficientes naquela iteração.
 ![Gráficos mostrando a evolução da reta ao longo das iterações do algoritmo de descida de
 gradiente.](gdevolucao.png){ width=75% }
 
+
+## 5. Regressão linear com múltiplas variáveis
+
+<!-- podemos ter casos com mais de uma característica -->
+Para casos com mais de uma variável de entrada a regressão com uma variável não é suficiente.
+Seguindo o exemplo dos preços das casas, mas agora considerando duas características para cada
+exemplo (tamanho e número de quartos), ajustar uma reta aos pontos não nos ajuda a prever
+respostas, já que os pontos agora estão num espaço tridimensional (Figura 9).
+
+<!-- gráfico 3d -->
+![Gráfico das casas de acordo com o tamanho, número de quartos e preço.](casaspreco3d.png){ width=80% }
+
+<!-- o que é regressão múltipla -->
+
+A **regressão linear múltipla** é uma generalização da regressão linear
+para qualquer quantidade de variáveis.  Nela, como temos três ou mais
+dimensões, ao invés de gerar uma reta para prever a resposta de um dado de
+teste, geraremos um plano (ou hiperplano quando temos 4 ou mais dimensões).
+
+<!-- função do plano -->
+Nesse exemplo, onde se tem duas variáveis de entrada, o plano pode ser representado pela função:
+
+$$f(x) = w_0 + w_1x_1 + w_2x_2$$
+
+Note que $x_j$ representa as características dos exemplos, assim $x_1$ é o tamanho da casa de um exemplo
+e $x_2$ a quantidade de quartos. Os coeficientes da função são representados por $w_0$, $w_1$ e $w_2$.
+
+Generalizando para $n$ características, temos:
+
+$$f(x) = w_0 + w_1x_1 + ... + w_nx_n$$
+
+<!-- simplificação da função do plano -->
+Para simplificar, representaremos todas as características de um exemplo através de um vetor $x$,
+mas com uma ressalva, ele terá $n+1$ elementos, sendo o primeiro sempre $x_0=1$.
+Isto nos ajudará em cálculos posteriores.
+
+$$x = \begin{bmatrix}
+     x_0 \\
+     x_2 \\
+     ... \\
+     x_n
+     \end{bmatrix}$$
+
+Além disso, os coeficientes da função também podem ser representados através de um vetor:
+
+$$w = \begin{bmatrix}
+     w_0 \\
+     w_2 \\
+     ... \\
+     w_n
+     \end{bmatrix}$$
+
+Utilizando os dois vetores, a função do plano é simplificada, sendo escrita da seguinte forma:
+
+$$f(x) = w^Tx$$
+
+Onde $w^T$ é a matriz transposta de $w$. Efetuando a multiplicação $w^Tx$ temos: $w_0x_0 + w_1x_1 + ... + w_nx_n$.
+
+<!-- minimizar erro médio quadrático -->
+Como na regressão linear com uma variável, a função resultante ideal na
+regressão linear múltipla é a que minimiza a função de erro médio quadrático
+$\frac{1}{2n} \sum_{i=1}^{n} (f(x^{(i)}) - y^{(i)})^2$, onde $n$ é a quantidade
+de exemplos nos dados de treinamento.
+
+Escrevendo ela em função de $w$, temos:
+
+$$J(w) = \frac{1}{2n} \sum_{i=1}^{m} (w^Tx^{(i)} - y^{(i)})^2$$
+
+<!-- utilização da descida de gradiente -->
+Novamente, para encontrar o valor mínimo de $J(w)$ utilizaremos o algoritmo da descida de gradiente.
+
+Na regressão linear com uma variável tínhamos duas regras para atualizar os
+coeficientes, uma para $w_0$ e outra para $w_1$, ambas utilizando derivadas
+parciais.  Entretanto, podemos generalizar o cálculo das derivadas parciais
+para qualquer quantidade de coeficientes.
+
+$$\frac{\partial}{\partial w_j} J(w) = \frac{1}{n} \sum_{i=1}^{n} ((f(x^{(i)}) - y^{(i)})x_j^{(i)})$$
+
+
+Com $j$ podendo variar de 0 até $n$.  Como convencionamos que $x_0^{(i)}$ é
+sempre igual a 1, então $\frac{\partial}{\partial w_0} J(w)$ vai ser igual ao
+que calculamos na regressão linear com uma variável.
+
+$$\frac{\partial}{\partial w_0} J(w) = \frac{1}{n} \sum_{i=1}^{n} (f(x^{(i)}) - y^{(i)})$$
+
+Seguindo a fórmula, percebemos que $\frac{\partial}{\partial w_1} J(w)$ também é igual ao cálculo
+da regressão linear com uma variável.
+
+$$\frac{\partial}{\partial w_1} J(w) = \frac{1}{n} \sum_{i=1}^{n} ((f(x^{(i)}) - y^{(i)})x_1^{(i)})$$
+
+
+<!-- regra de atualização -->
+Para finalizar, o algoritmo de descida de gradiente deve ser executado da mesma forma que
+especificada anteriormente para regressão com uma variável.
+
+A regra de atualização dos coeficientes é:
+
+$$w_j := w_j - \alpha \frac{\partial}{\partial w_j} J(w)$$
+
+ou seja
+
+$$w_j := w_j - \alpha \frac{1}{m} \sum_{i=1}^{m} (f(x^{(i)}) - y^{(i)})x_j^{(i)}$$
+
+
+<!-- resultado -->
+O plano resultante para o exemplo dos preços das casas usando o tamanho das casas e a quantidade
+de quartos como variáveis de entrada pode ser visto na Figura 10.
+
+![Gráfico com o plano gerado pela regressão linear múltipla](plano.png){ width=80% }
 
 \  
 
