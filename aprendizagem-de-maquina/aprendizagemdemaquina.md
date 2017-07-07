@@ -2,7 +2,7 @@
 % Yuri Malheiros
 % UFPB - Campus IV - Rio Tinto
 
-# Aprendizagem de máquina - Primeiros passos e regressão linear
+# Aprendizagem de máquina - Primeiros passos e regressões
 
 ## 1. Introdução
 
@@ -481,9 +481,57 @@ de quartos como variáveis de entrada pode ser visto na Figura 10.
 
 ![Gráfico com o plano gerado pela regressão linear múltipla](plano.png){ width=80% }
 
+
+## 6. Regressão polinomial
+
+<!-- O que é regressão polinomial -->
+Na regressão linear, tenta-se ajustar uma função, seja ela uma reta, um plano
+ou um hiperplano, a um conjunto de dados de treinamento para encontrar
+respostas para os dados de teste.  Com isso, estamos supondo que os dados
+seguem uma tendência linear, mas se isso não for verdade, o modelo falhará em
+muitas previsões, pois a função encontrada não consegue explicar bem os dados.
+Entretanto, para dados que não seguem uma tendência linear, é possível ajustar
+outros tipos de curvas ou superfícies através da **regressão polinomial**.
+
+<!-- função -->
+Utilizando os dados representados no gráfico de cima da Figura 1, aplicaremos
+a regressão polinomial para encontrar uma curva que se ajuste aos dados.
+A função que representa uma curva pode ter diversas formas, por exemplo,
+$f(x) = w_0x_0 + w_1x_1^2$, $f(x) = w_0 + w_1x_1 + w_2x_2^3$,
+$f(x) = w_0 + w_1x_1 + w_2\sqrt{x_1}$, etc.
+
+<!-- mapeando características e aplicando gradiente descendente -->
+A técnica para encontrar a função que se ajusta aos pontos é a mesma
+usada para regressão linear com múltiplas variáveis. Ou seja, aplicaremos o
+algoritmo de descida de gradiente para minimizar a função de erro médio
+quadrático. Entretanto, as variáveis de entrada precisam de um cuidado
+especial.
+
+Anteriormente simplificamos a função do plano na regressão linear através da
+múltiplicação de dois vetores $x$ e $w$. Na regressão polinomial, $w$ permanece
+o mesmo, mas $x$ precisa receber os valores de acordo com a definição da função
+da curva. Por exemplo, na função $f(x) = w_0x_0 + w_1x_1^2$ tem-se que $x^T =
+\begin{bmatrix} x_0 & x_1^2 \end{bmatrix}$ Note que o segundo elemento está
+elevado ao quadrado, assim como na definição da função. Já numa função $f(x) =
+w_0 + w_1x_1 + w_2x_2^3$, temos  $x^T = \begin{bmatrix}x_0 & x_1 &
+x_2^3\end{bmatrix}$. Assim, é fundamental que $x_i$ no vetor $x$ tenha
+exatamente o valor especificado na função, seja ele elevado a alguma potência,
+uma raiz, etc.
+
+<!-- exemplos -->
+A Figura 11 apresenta duas curvas encontradas usando os dados dos preços das casas de
+acordo com o seu tamanho. Na parte de cima temos uma curva do
+tipo: $f(x) = w_0 + w_1x^2$. Na parte de baixo temos outra curva, mas agora
+do tipo: $f(x) = w_3x^3 + w_2x^2 + w_1x + w_0$.
+
+![O gráfico de cima mostra o resultado da regressão polinomial para uma curva do tipo $f(x) = w_0 + w_1x^2$. O gráfico de baixo
+mostra o resultado para uma curva do tipo $f(x) = w_3x^3 + w_2x^2 + w_1x + w_0$.](regressaopoli.png){ width=80% }
+
+
 \  
 
 ## Referências
 
-- Livro Machine Learning (1a edição). Mitchell, T.
 - Livro An Introduction to Statistical Learning. James, G., Witten, D., Hastie, T. e Tibshirani, R.
+- Livro Machine Learning (1a edição). Mitchell, T.
+- Curso Machine Learning - Stanford University. Ng, A.
