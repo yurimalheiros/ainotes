@@ -532,6 +532,6 @@ mostra o resultado para uma curva do tipo $f(x) = w_3x^3 + w_2x^2 + w_1x + w_0$.
 
 ## Referências
 
-- Livro An Introduction to Statistical Learning. James, G., Witten, D., Hastie, T. e Tibshirani, R.
-- Livro Machine Learning (1a edição). Mitchell, T.
-- Curso Machine Learning - Stanford University. Ng, A.
+- Livro: An Introduction to Statistical Learning. James, G., Witten, D., Hastie, T. e Tibshirani, R.
+- Livro: Machine Learning (1a edição). Mitchell, T.
+- Curso: Machine Learning - Stanford University. Ng, A.

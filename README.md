@@ -1,6 +1,6 @@
 # Notas de Aula - Inteligência Artificial
 
-Esse repositório contém notas de aula sobre Inteligência Artificial escritas por [Yuri Malheiros](http://yurimalheiros.me/).
+Esse repositório contém notas de aula sobre Inteligência Artificial escritas por [Yuri Malheiros](https://twitter.com/yurimalheiros).
 
 Os seguintes assuntos podem ser encontrados aqui:
 

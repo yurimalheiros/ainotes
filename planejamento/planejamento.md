@@ -465,6 +465,6 @@ sempre executada antes de Mover(B, Mesa, C).](pop-7.png)
 
 ## Referências
 
-- Slides da disciplina Planning and Search da University of Nottingham (aulas 9, 10 e 11). Alechina, N. URL: http://www.cs.nott.ac.uk/~psznza/G52PAS/
-- Notas de aula da disciplina Artificial Intelligence do NPTEL (aulas 23, 24 e 25). Sarkar, S. e Mitra P. URL: http://nptel.ac.in/courses/106105078/24
-- Livro Artificial Intelligence a Modern Approach (3a edição). Russel, S. e Norvig, P.
+- Slides da disciplina: Planning and Search da University of Nottingham (aulas 9, 10 e 11). Alechina, N. URL: http://www.cs.nott.ac.uk/~psznza/G52PAS/
+- Notas de aula da disciplina: Artificial Intelligence do NPTEL (aulas 23, 24 e 25). Sarkar, S. e Mitra P. URL: http://nptel.ac.in/courses/106105078/24
+- Livro: Artificial Intelligence a Modern Approach (3a edição). Russel, S. e Norvig, P.

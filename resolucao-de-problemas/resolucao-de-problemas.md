@@ -230,3 +230,9 @@ Solução: João Pessoa, Campina Grande, Soledade, Patos, Pombal,
 Nesse algoritmo, é importante que a função heurística não superestime o custo de atingir o objetivo, isto é, $h(n) < custo real$. Tal característica é chamada de admissibilidade. Além disso, para o algoritmo ser ótimo, $h(n)$ precisa ser consistente, ou seja, $h(s)$ precisa ser menor ou igual que o custo de ir do estado *s* para o seu sucessor *s'* somado com h(s'). Matematicamente a consistência é definida como: $h(s) \leq custo(s, a, s') + h(s')$.
 
 A busca A\* é completa e ótima se $h(n)$ for consistente, mas a sua complexidade continua sendo exponencial no pior caso como em outros algoritmos. Nessa busca, a memória ocupada é um problema bem maior que o tempo de execução, mas mesmo assim, uma boa função heurística ainda fornece uma grande vantagem em relação aos algoritmos de busca sem informações.
+
+\  
+
+## Referências
+
+- Livro: Artificial Intelligence a Modern Approach (3a edição). Russel, S. e Norvig, P.

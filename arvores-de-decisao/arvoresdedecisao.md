@@ -529,5 +529,5 @@ diferentes para o maior ganho de informação.
 
 ## Referências
 
-- Livro Machine Learning (1a edição). Mitchell, T.
-- Livro Artificial Intelligence a Modern Approach (3a edição). Russel, S. e Norvig, P.
+- Livro: Artificial Intelligence a Modern Approach (3a edição). Russel, S. e Norvig, P.
+- Livro: Machine Learning (1a edição). Mitchell, T.
