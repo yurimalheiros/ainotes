@@ -434,10 +434,10 @@ $$RazãoDeGanho(S, A) = \frac{Ganho(S, A)}{SplitInfo(S, A)}$$
 
 $$SplitInfo(S, A) = \sum_{i=1}^{n}  \frac{|S_i|}{|S|} \log_2 \frac{|S_i|}{|S|}$$
 
-Dado que o conjunto de exemplos $S$ tem $i$ atributos, $S_i$ é o subconjunto
-apenas com o atributo $i$. Assim, quanto maior for o número de subconjuntos
-gerados por um atributo, maior vai ser o valor de SplitInfo e consequentemente
-menor vai ser o valor da razão de ganho.
+Dado que o conjunto de exemplos $S$ tem $i$ valores para o atributo $A$, $S_i$
+é o subconjunto de $S$, onde $A = i$. Assim, quanto maior for o número de
+subconjuntos gerados por um atributo, maior vai ser o valor de SplitInfo e
+consequentemente menor vai ser o valor da razão de ganho.
 
 Note que se SplitInfo for igual a zero, a razão de ganho será indefinida. Um
 valor muito pequeno resultante de SplitInfo também pode ser um problema, pois
