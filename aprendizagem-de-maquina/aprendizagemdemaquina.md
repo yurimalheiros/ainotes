@@ -437,7 +437,7 @@ de exemplos nos dados de treinamento.
 
 Escrevendo ela em função de $w$, temos:
 
-$$J(w) = \frac{1}{2n} \sum_{i=1}^{m} (w^Tx^{(i)} - y^{(i)})^2$$
+$$J(w) = \frac{1}{2n} \sum_{i=1}^{n} (w^Tx^{(i)} - y^{(i)})^2$$
 
 <!-- utilização da descida de gradiente -->
 Novamente, para encontrar o valor mínimo de $J(w)$ utilizaremos o algoritmo da descida de gradiente.
@@ -472,7 +472,7 @@ $$w_j := w_j - \alpha \frac{\partial}{\partial w_j} J(w)$$
 
 ou seja
 
-$$w_j := w_j - \alpha \frac{1}{m} \sum_{i=1}^{m} (f(x^{(i)}) - y^{(i)})x_j^{(i)}$$
+$$w_j := w_j - \alpha \frac{1}{n} \sum_{i=1}^{n} (f(x^{(i)}) - y^{(i)})x_j^{(i)}$$
 
 
 <!-- resultado -->
