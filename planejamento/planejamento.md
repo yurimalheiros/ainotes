@@ -6,7 +6,7 @@
 
 ## 1. Introdução
 
-Planejamento é o processo de elaboração de um plano, isto é, uma sequecência de
+Planejamento é o processo de elaboração de um plano, isto é, uma sequência de
 passos para alcançar um objetivo. Esta definição nos leva a pensar que
 planejamento é o mesmo que busca na resolução de problemas. De fato, as duas
 abordagens são semelhantes, inclusive é possível usar buscas para resolver
@@ -59,7 +59,7 @@ menos *Em(JoãoPessoa)* e unido com *Em(CampinaGrande)*.
 
 ## 3. Definindo um problema
 
-Um problema de planejamento consiste de um estado inicial, um objetivo e
+Um problema de planejamento consiste em um estado inicial, um objetivo e
 um conjunto de ações que podem ser executadas. O estado inicial é um estado
 como qualquer outro, já o objetivo, além dos fluentes positivos, também
 pode ter fluentes negados para garantir que um estado seja falso, e pode conter
@@ -305,7 +305,7 @@ relevantes;
 5. Para cada novo estado repita 2, 3 e 4.
 
 A Figura 2 mostra o objetivo do exemplo de transporte de cargas e os
-primeiros atecessores gerados a partir da regressão do objetivo. As arestas que ligam
+primeiros antecessores gerados a partir da regressão do objetivo. As arestas que ligam
 os nós representam as ações.
 
 ![Objetivo e seus antecessores na regressão](regressao.png)

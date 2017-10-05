@@ -88,7 +88,7 @@ Tabela 1 em dois subconjuntos, o primeiro com os exemplos que possuem
 $Vento=Fraco$ e o segundo com os exemplos que possuem $Vento=Forte$.
 
 Cada subconjunto vai originar um novo nó na árvore. Se todos os exemplos de um
-subconjunto possuírem o mesmo rótulo, então o no será um nó folha representando
+subconjunto possuírem o mesmo rótulo, então o nó será um nó folha representando
 uma decisão com o valor correspondente a esse rótulo. Caso contrário, o
 algoritmo continua escolhendo o melhor atributo para cada subconjunto gerado.
 Esse atributo vai dividir os subconjuntos em novos subconjuntos da mesma forma
@@ -218,8 +218,8 @@ $$H(S) = -(\frac{9}{14}) \log_2 (\frac{9}{14}) - (\frac{5}{14}) \log_2 (\frac{5}
 
 Em seguida, vamos calcular o valor do somatório na fórmula
 para cada um dos atributos. O atributo *Clima* possui 3 possíveis valores:
-*Ensolarado*, *Nublado* e *Chuvoso*, assim temos que calcular a entropia para o
-subconjunto $Clima=Ensolarado$, $Clima=Nublado$ e $Clima=Chuvoso$. As Tabelas
+*Ensolarado*, *Nublado* e *Chuvoso*, assim temos que calcular a entropia para os
+subconjuntos $Clima=Ensolarado$, $Clima=Nublado$ e $Clima=Chuvoso$. As Tabelas
 2, 3 e 4 trazem esses subconjuntos respectivamente.
 
 Table: Subconjunto dos dados de treinamento para Clima=Ensolarado
@@ -334,7 +334,7 @@ $$Ganho(S, Vento) = 0,02$$
 Assim, o atributo escolhido para o nó é *Umidade*. Todos os exemplos do
 subconjunto com o valor *Alta* para o atributo *Umidade* possuem o rótulo Não, e
 todos os exemplos do subconjunto com o valor *Normal* para o atributo *Umidade*
-possuem o rótulo Sim. Portanto, gera-se dois nós folhas, um com o valor Não e
+possuem o rótulo Sim. Portanto, geram-se dois nós folhas, um com o valor Não e
 outro com o valor Sim.
 
 
@@ -348,7 +348,7 @@ $$Ganho(S, Vento) = 0,971$$
 Assim, o atributo escolhido para o nó é *Vento*. Todos os exemplos do subconjunto
 com o valor *Forte* para o atributo *Vento* possuem o rótulo Não, e todos os
 exemplos do subconjunto com o valor *Fraco* para o atributo *Vento* possuem o
-rótulo Sim. Portanto, também gera-se dois nós folhas, um com o valor Não e
+rótulo Sim. Portanto, também geram-se dois nós folhas, um com o valor Não e
 outro com o valor Sim.
 
 A execução do algoritmo termina após a geração dos últimos nós folhas. Como não

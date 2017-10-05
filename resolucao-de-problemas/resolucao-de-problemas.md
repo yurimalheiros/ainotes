@@ -80,7 +80,7 @@ A seguir veremos três tipos de buscas: busca em largura, busca de custo uniform
 
 ### 4.1. Busca em largura
 
-A busca em largura é uma estratégia de busca simples, na qual o nó inicial é explorado, em seguida os sucessores do nó inicial são explorados, depois os sucessores desses nós, etc. Nesse caso, a estratégia de escolha de um nó na borda é simplemente explorar o nó que foi adicionado primeiramente à borda, ou seja, a borda funciona como uma fila. Dada a árvore da Figura 4, a ordem de visitação dos nós aplicando a busca em largura com estado inicial A e objetivo G é: A, B, C, D, E, F e G.
+A busca em largura é uma estratégia de busca simples, na qual o nó inicial é explorado, em seguida os sucessores do nó inicial são explorados, depois os sucessores desses nós, etc. Nesse caso, a estratégia de escolha de um nó na borda é simplesmente explorar o nó que foi adicionado primeiramente à borda, ou seja, a borda funciona como uma fila. Dada a árvore da Figura 4, a ordem de visitação dos nós aplicando a busca em largura com estado inicial A e objetivo G é: A, B, C, D, E, F e G.
 
 ![Árvore binária.](arvore.png)
 
@@ -93,7 +93,7 @@ A busca de custo uniforme é uma extensão da busca em largura, que é ótima me
 
 Para implementação, existe uma modificação importante a ser feita no algoritmo de busca genérica apresentado anteriormente. Quando um nó já estiver na fronteira e o algoritmo tentar adicionar ele novamente, é necessário verificar se esse novo caminho para o nó tem um custo menor que o custo de caminho do nó na fronteira, se isso for verdade, o nó deve ser substituído.
 
-No grafo da Figura 5, se for usada a busca de custo uniforme para sair de A até encontrar o objetivo E, os seguintes passos vão ocorrer. Primeiro explora-se o estado inicial A, com isso tem-se dois nós na borda: B e C. Como B tem o menor custo (10), então ele é escolhido, adicionando o nó D com custo 40 (10+30) à borda. O próximo nó explorado será C, que tem custo 20, assim o nó E será adicionado à borda com custo 120 (20+100). A seguir, o nó D é explorado e novamente tem-se o nó E para ser adicionado à borda. Nesse caso, o caminho para E tem custo 80 (10+30+40), que é menor que custo de chegar em E através de D (120). Assim, o algoritmo substitui o nó E na borda, pelo nó com o menor custo.
+No grafo da Figura 5, se for usada a busca de custo uniforme para sair de A até encontrar o objetivo E, os seguintes passos vão ocorrer. Primeiro explora-se o estado inicial A, com isso tem-se dois nós na borda: B e C. Como B tem o menor custo (10), então ele é escolhido, adicionando o nó D com custo 40 (10+30) à borda. O próximo nó explorado será C, que tem custo 20, assim o nó E será adicionado à borda com custo 120 (20+100). A seguir, o nó D é explorado e novamente tem-se o nó E para ser adicionado à borda. Nesse caso, o caminho para E tem custo 80 (10+30+40), que é menor que custo de chegar em E através de C (120). Assim, o algoritmo substitui o nó E na borda, pelo nó com o menor custo.
 
 ![Grafo para ilustrar a troca de nós na borda numa busca de custo uniforme.](grafo.png)
 

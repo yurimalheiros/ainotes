@@ -508,7 +508,7 @@ quadrático. Entretanto, as variáveis de entrada precisam de um cuidado
 especial.
 
 Anteriormente simplificamos a função do plano na regressão linear através da
-múltiplicação de dois vetores $x$ e $w$. Na regressão polinomial, $w$ permanece
+multiplicação de dois vetores $x$ e $w$. Na regressão polinomial, $w$ permanece
 o mesmo, mas $x$ precisa receber os valores de acordo com a definição da função
 da curva. Por exemplo, na função $f(x) = w_0x_0 + w_1x_1^2$ tem-se que $x^T =
 \begin{bmatrix} x_0 & x_1^2 \end{bmatrix}$ Note que o segundo elemento está
