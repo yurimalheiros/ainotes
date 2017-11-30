@@ -15,3 +15,7 @@ cd ..
 cd aprendizagem-de-maquina
 pandoc -f markdown+link_attributes --highlight-style=tango -V lang=pt-BR --template=../ianotes.latex  aprendizagemdemaquina.md --latex-engine=pdflatex -o aprendizagemdemaquina.pdf
 cd ..
+
+cd aprendizagem-de-maquina2
+pandoc -f markdown+link_attributes --highlight-style=tango -V lang=pt-BR --template=../ianotes.latex  aprendizagemdemaquina.md --latex-engine=pdflatex -o aprendizagemdemaquina.pdf
+cd ..
