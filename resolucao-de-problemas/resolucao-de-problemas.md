@@ -20,7 +20,7 @@ A Figura 1 apresenta um mapa com algumas cidades do estado da Paraíba. Nele, um
 
 ![Caminho entre a cidade João Pessoa e Cajazeiras.](pbmapa-solucao.png)
 
-## 2. Formulando problemas
+## 2. Formulando um problema
 
 Um problema de busca pode ser definido por 6 componentes:
 
@@ -69,7 +69,8 @@ Na linha 2, o algoritmo inicializa a borda com o estado inicial, em seguida, na 
 
 Na implementação, é importante deixar clara a diferença entre os estados de um problema e os nós no grafo onde a busca é realizada. Até aqui, os conceitos foram utilizados sem distinção, mas, para implementar as buscas, precisamos deixar claro o papel de cada um.
 
-Um estado corresponde a uma configuração de mundo, ou seja, a um estado do problema. Um nó é uma estrutura do grafo, que contém um estado, o custo para se chegar até esse estado e uma referência para o estado pai, isto é, o estado anterior no qual foi executado uma ação para se chegar ao estado do nó. Ao final da busca, as referências para o estado pai podem ser utilizadas para recuperar o caminho percorrido do estado inicial até o objetivo. Por fim, é importante saber que dois nós distintos, podem conter o mesmo estado, isso acontece quando caminhos diferentes no grafo levam a um mesmo estado.
+Um estado corresponde a uma configuração de mundo, ou seja, a um estado do problema. Um nó é uma estrutura do grafo, que contém um estado, o custo para se chegar até esse estado e uma referência para o estado pai, isto é, o estado anterior no qual foi executado uma ação para se chegar ao estado do nó. Ao final da busca, as referências para o estado pai podem ser utilizadas para recuperar o caminho percorrido do estado inicial até o objetivo.
+<!-- Por fim, é importante saber que, em alguns casos, dois nós distintos podem conter o mesmo estado, isso acontece quando caminhos diferentes no grafo levam a um mesmo estado. -->
 
 
 ## 4. Busca sem informações (busca cega)
@@ -107,7 +108,7 @@ A busca de custo uniforme é completa. Ela também é ótima se todos os custos 
 
 Na busca em profundidade, a estratégia de escolha de um estado na borda é selecionar o último estado que foi adicionado. Assim, a borda nesse algoritmo pode ser representada por uma pilha. Dada a árvore da Figura 4, a ordem de visitação dos nós aplicando a busca em largura com estado inicial A e objetivo G é: A, B, D, E, C, F, G.
 
-O algoritmo de busca em profundidade é completo, porém ele não é ótimo. Suponha que na Figura 4 o nó D seja um objetivo e C também. Nesse caso, a busca em profundidade retornaria D como solução, mesmo C sendo uma solução melhor. A complexidade temporal é $\mathcal{O}(b^m)$, onde m é a profundidade máxima. Já a complexidade espacial é $\mathcal{O}(bm)$, o que faz o uso de memória desse algoritmo ser muito menor que o da busca em largura e da busca em custo uniforme. Isso é possível, porque após um nó e todos os seus descendentes serem visitados, eles podem ser removidos da memória sem comprometer o funcionamento do algoritmo.
+O algoritmo de busca em profundidade é completo, porém ele não é ótimo. Suponha que na Figura 4 o nó D seja um objetivo e C também. Nesse caso, a busca em profundidade retornaria D como solução, mesmo C sendo uma solução com menos passos. A complexidade temporal é $\mathcal{O}(b^m)$, onde m é a profundidade máxima. Já a complexidade espacial é $\mathcal{O}(bm)$, o que faz o uso de memória desse algoritmo ser muito menor que o da busca em largura e da busca em custo uniforme. Isso é possível, porque após um nó e todos os seus descendentes serem visitados, eles podem ser removidos da memória sem comprometer o funcionamento do algoritmo.
 
 
 ## 5. Busca informada (busca heurística)
@@ -128,7 +129,7 @@ A Figura 7, traz novamente o mapa com algumas cidades da Paraíba, mas dessa vez
 
 ![Mapa simplificado da Paraíba com custos entre as cidades e a distância em linha reta entre cada cidade e Cajazeiras.](pbmapa-custos-estimativa.png)
 
-Dado que o estado inicial é João Pessoa, a seguir tem-se uma lista das fronteiras e dos nós escolhidos em cada iteração do algoritmo:
+Dado que o estado inicial é João Pessoa, a seguir tem-se uma lista das fronteiras, com os nomes dos estados e seus custos, e dos nós escolhidos em cada iteração do algoritmo:
 
 ~~~~{.email}
 Iteração 1
@@ -230,8 +231,6 @@ Solução: João Pessoa, Campina Grande, Soledade, Patos, Pombal,
 Nesse algoritmo, é importante que a função heurística não superestime o custo de atingir o objetivo, isto é, $h(n) < custo real$. Tal característica é chamada de admissibilidade. Além disso, para o algoritmo ser ótimo, $h(n)$ precisa ser consistente, ou seja, $h(s)$ precisa ser menor ou igual que o custo de ir do estado *s* para o seu sucessor *s'* somado com h(s'). Matematicamente a consistência é definida como: $h(s) \leq custo(s, a, s') + h(s')$.
 
 A busca A\* é completa e ótima se $h(n)$ for consistente, mas a sua complexidade continua sendo exponencial no pior caso como em outros algoritmos. Nessa busca, a memória ocupada é um problema bem maior que o tempo de execução, mas mesmo assim, uma boa função heurística ainda fornece uma grande vantagem em relação aos algoritmos de busca sem informações.
-
-\  
 
 ## Referências
 
