@@ -29,8 +29,8 @@ o planejador.
 Em STRIPS, um estado é representado por uma conjunção de fluentes (constantes ou
 predicados). Por exemplo:
 
-- Leve ^ Resistente
-- Em(Pacote1, JoãoPessoa) ^ Em(Pacote2, CampinaGrande)
+- Leve $\land$ Resistente
+- Em(Pacote1, JoãoPessoa) $\land$ Em(Pacote2, CampinaGrande)
 
 As definições levam em consideração a suposição de mundo fechado, isto é, os
 fluentes que não aparecerem num estado são falsos. Com isso, não é necessário
@@ -85,9 +85,10 @@ Em(Carga1, JoãoPessoa) ^ Em(Carga2, Recife) ^ Em(Caminhão1, JoãoPessoa) ^
 Em(Caminhão2, Recife)
 ~~~
 
-No estado inicial, temos uma Carga1 na cidade de João Pessoa e uma Carga2 na
+No estado inicial, temos a Carga1 na cidade de João Pessoa e a Carga2 na
 cidade do Recife. Isto é expressado pelo predicado `Em(x, y)`, que significa
-que um objeto x está num lugar y.
+que um objeto x está num lugar y. Além disso, temos o Caminhão1 em João Pessoa
+e o Caminhão2 em Recife.
 
 O objetivo do problema é:
 
@@ -105,11 +106,11 @@ A primeira ação disponível é a ação Carregar:
 
 ~~~{.email}
 Carregar(c, cam, l)
-Pré-condição: Em(c, l) ^ Em(cam, l) ^ Carga(c) ^ Caminhão(cam) ^ Lugar(l)
+Pré-condição: Em(c, l) ^ Em(cam, l)
 Efeito: ¬Em(c, l) ^ Dentro(c, cam)
 ~~~
 
-Ela tem como variáveis `c`, `cam` e `l`, a primeira precisa ser uma carga, a segunda
+Ela tem como variáveis `c`, `cam` e `l`, a primeira é uma carga, a segunda
 um caminhão e a terceira um lugar. Além disso, foi utilizado o predicado
 `Dentro(x, y)`, que significa que um objeto x está dentro de um caminhão y.
 
@@ -117,19 +118,18 @@ A segunda ação é Descarregar:
 
 ~~~{.email}
 Descarregar(c, cam, l)
-Pré-condição: Dentro(c, cam) ^ Em(cam, l) ^ Carga(c) ^ Caminhão(cam) ^
-              Lugar(l)
+Pré-condição: Dentro(c, cam) ^ Em(cam, l)
 Efeito: Em(c, l) ^ ¬Dentro(c, cam)
 ~~~
 
 Nessa ação, uma carga `c` que está dentro de um caminhão `cam` é retirada e deixada
-na cidade `c`.
+na cidade `l`.
 
 Por fim, temos a ação Transportar:
 
 ~~~{.email}
 Transportar(cam, de, para)
-Pré-condição: Em(cam, de) ^ Caminhão(cam) ^ Lugar(de) ^ Lugar(para)
+Pré-condição: Em(cam, de)
 Efeito: ¬Em(cam, de) ^ Em(cam, para)
 ~~~
 
@@ -158,8 +158,7 @@ Em(Caminhão2, Recife)
 Aplicando Carregar(Carga1, Caminhão1, JoãoPessoa)
 
 Pré-condição:
-Em(Carga1, JoãoPessoa) ^ Em(Caminhão1, JoãoPessoa) ^ Carga(Carga1) ^
-Caminhão(Caminhão1) ^ Lugar(JoãoPessoa)
+Em(Carga1, JoãoPessoa) ^ Em(Caminhão1, JoãoPessoa)
 
 Efeito:
 ¬Em(Carga1, JoãoPessoa) ^ Dentro(Carga1, Caminhão1)
@@ -173,8 +172,7 @@ Em(Caminhão2, Recife) ^ Dentro(Carga1, Caminhão1)
 Aplicando Transportar(Caminhão1, JoãoPessoa, Recife)
 
 Pré-condição:
-Em(Caminhão1, JoãoPessoa) ^ Caminhão(Caminhão1) ^ Lugar(JoãoPessoa) ^
-Lugar(Recife)
+Em(Caminhão1, JoãoPessoa)
 
 Efeito:
 ¬Em(Caminhão1, JoãoPessoa) ^ Em(Caminhão1, Recife)
@@ -188,8 +186,7 @@ Em(Caminhão1, Recife)
 Aplicando Descarregar(Carga1, Caminhão1, Recife)
 
 Pré-condição:
-Dentro(Carga1, Caminhão1) ^ Em(Caminhão1, Recife) ^ Carga(Carga1) ^
-Caminhão(Caminhão1) ^ Lugar(Recife)
+Dentro(Carga1, Caminhão1) ^ Em(Caminhão1, Recife)
 
 Efeito:
 Em(Carga1, Recife) ^ ¬Dentro(Carga1, Caminhão1)
@@ -204,8 +201,7 @@ Em(Carga1, Recife)
 Aplicando Carregar(Carga2, Caminhão2, Recife)
 
 Pré-condição:
-Em(Carga2, Recife) ^ Em(Caminhão2, Recife) ^ Carga(Carga2) ^
-Caminhão(Caminhão2) ^ Lugar(Recife)
+Em(Carga2, Recife) ^ Em(Caminhão2, Recife)
 
 Efeito:
 ¬Em(Carga2, Recife) ^ Dentro(Carga2, Caminhão2)
@@ -219,8 +215,7 @@ Dentro(Carga2, Caminhão2)
 Aplicando Transportar(Caminhão2, Recife, JoãoPessoa)
 
 Pré-condição:
-Em(Caminhão2, Recife) ^ Caminhão(Caminhão2) ^ Lugar(Recife) ^
-Lugar(JoãoPessoa)
+Em(Caminhão2, Recife)
 
 Efeito:
 ¬Em(Caminhão2, Recife) ^ Em(Caminhão2, JoãoPessoa)
@@ -234,8 +229,7 @@ Em(Caminhão2, JoãoPessoa)
 Aplicando Descarregar(Carga2, Caminhão2, JoãoPessoa)
 
 Pré-condição:
-Dentro(Carga2, Caminhão2) ^ Em(Caminhão2, JoãoPessoa) ^ Carga(Carga2) ^
-Caminhão(Caminhão2) ^ Lugar(JoãoPessoa)
+Dentro(Carga2, Caminhão2) ^ Em(Caminhão2, JoãoPessoa)
 
 Efeito:
 Em(Carga2, JoãoPessoa) ^ ¬Dentro(Carga2, Caminhão2)
@@ -252,8 +246,8 @@ nada que contradiga eles. Dessa forma, o objetivo foi alcançado.
 
 ## 4. Busca
 
-É possível resolver um problema de planejamento utilizando algoritmos de busca
-conhecidos, como busca em largura ou busca A*. Entretanto, além da busca comum
+É possível resolver um problema de planejamento utilizando algoritmos de busca, 
+como busca em largura ou busca A\*. Entretanto, além da busca comum
 do estado inicial para o objetivo (progressão), no planejamento também é
 utilizada a busca que parte do objetivo e vai até o estado inicial (regressão).
 
@@ -273,7 +267,7 @@ Os passos para aplicar a progressão são:
 2. Encontrar todas as ações que tem suas pré-condições satisfeitas pelo estado
 atual;
 3. Aplicar os efeitos das ações no estado atual para gerar os estados sucessores;
-4. Verifique se algum dos estados sucessores satisfazem o objetivo;
+4. Verificar se algum dos estados sucessores satisfazem o objetivo;
 5. Para cada novo estado repita 2, 3 e 4.
 
 A Figura 1 mostra o estado inicial do exemplo de transporte de cargas e os
@@ -287,7 +281,7 @@ os nós representam as ações.
 A regressão é uma busca invertida, ela começa do objetivo e vai até o estado
 inicial. Esse tipo de busca é facilitada pela natureza de uma linguagem como
 STRIPS. Dado um estado $s$ e uma ação $a$, a regressão $s'$ de $s$ através de $a$
-pode ser obtida da seguinte forma: $s' = (s - fluentesPositivosDoEfeito(a)) \cup préCondição(a)$
+pode ser obtida da seguinte forma: $s' = (s - fluentesPositivosDoEfeito(a)) \cup préCondição(a)$.
 
 Tendo isto, o próximo passo é saber quais as ações podemos usar para regredir
 de um estado para outro. Tais ações são chamadas de ações relevantes.
@@ -297,11 +291,11 @@ um fluente que negue um fluente do estado sendo regredido.
 
 Os passos para aplicar a regressão são:
 
-1. O estado atual é o objetivo;
+1. Iniciar o estado atual como o objetivo;
 2. Encontrar todas as ações relevantes no estado atual;
 3. Gerar estados antecessores regredindo o estado atual através das ações
 relevantes;
-4. Verifique se algum dos estados antecessores satisfazem o estado inicial;
+4. Verificar se algum dos estados antecessores satisfazem o estado inicial;
 5. Para cada novo estado repita 2, 3 e 4.
 
 A Figura 2 mostra o objetivo do exemplo de transporte de cargas e os
@@ -365,7 +359,7 @@ problema de planejamento, elas não são as ações da busca no espaço de plano
 - Restrições de ordem. Define que uma ação deve vir antes ou depois de outra.
 $A \prec B$ significa que A deve ser executado antes de B.
 - Condições abertas. São pré-condições de algum passo que ainda não possui um
-link. Uma pré-condição é satisfeita quando ela é efeito de um passo anterior.
+link causal. Uma pré-condição é satisfeita quando ela é efeito de um passo anterior.
 
 A busca começa com um plano incompleto que consiste apenas da ação Início e da
 ação Fim, onde $Início \prec Fim$. A próxima etapa da busca é escolher uma
