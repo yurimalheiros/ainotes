@@ -7,7 +7,7 @@
 ## 1. Introdução
 
 A aprendizagem por árvores de decisão é um das formas mais simples e populares
-de aprendizagem de máquina aplicada com sucesso a diversos tipos de problemas.
+de aprendizagem de máquina aplicada na prática com sucesso a diversos tipos de problemas.
 Uma árvore de decisão representa uma função que recebe como entrada um vetor de
 valores de atributos e, através de uma sequência de testes, retorna uma decisão
 formada por um único valor.
@@ -106,11 +106,11 @@ usado de forma vaga. Ser o melhor atributo significa ser o atributo que melhor
 divide um conjunto de exemplos de acordo com os rótulos.
 
 Por exemplo, na Tabela 1, temos 14 exemplos, sendo 9 exemplos com rótulo *Sim*
-e 4 exemplos com rótulo *Não*. Usando o atributo *Clima*, tem-se 3 possíveis
+e 5 exemplos com rótulo *Não*. Usando o atributo *Clima*, tem-se 3 possíveis
 valores (*Ensolarado*, *Nublado* e *Chuvoso*), assim o conjunto de treinamento
 é divido em 3 subconjuntos (um para cada possível valor do atributo *Clima*).
 Nesse caso, 5 exemplos possuem o valor *Ensolarado*, sendo 2 com o rótulo *Sim*
-e 3 com o rótulo *Não*. Para o valor *Nublado* tem-se 4 exemplos, sendo todos
+e 3 com o rótulo *Não*. Para o valor *Nublado* tem-se 5 exemplos, sendo todos
 eles com rótulo *Sim*. Por fim, 5 exemplos tem o valor *Chuvoso*, sendo 3 com o
 rótulo Sim e 2 com o rótulo *Não*. A Figura 2 apresenta o resultado da divisão
 dos exemplos usando o atributo *Clima*, os quadrados com a letra S representam
@@ -122,7 +122,7 @@ com o rótulo *Não*.
 Uma divisão boa é uma divisão que cria subconjuntos organizados, ou seja,
 subconjuntos mais uniformes em relação aos valores dos rótulos. Continuando com
 o nosso exemplo, o subconjunto dos exemplos que possuem o valor *Nublado* para
-o atributo *Clima* é um subconjunto com boa organização, pois todos os eles
+o atributo *Clima* é um subconjunto com boa organização, pois todos eles
 possuem o mesmo rótulo. Entretanto, os subconjuntos gerados pelos valores
 *Ensolarado* e *Chuvoso* são mais desorganizados, pois os exemplos possuem
 valores de rótulos misturados.
@@ -216,7 +216,7 @@ conjunto representado pela Tabela 1. Vimos anteriormente que $p_{sim} =
 
 $$H(S) = -(\frac{9}{14}) \log_2 (\frac{9}{14}) - (\frac{5}{14}) \log_2 (\frac{5}{14}) = 0,940$$
 
-Em seguida, vamos calcular o valor do somatório na fórmula
+Em seguida, vamos calcular o valor do somatório na fórmula do ganho de informação
 para cada um dos atributos. O atributo *Clima* possui 3 possíveis valores:
 *Ensolarado*, *Nublado* e *Chuvoso*, assim temos que calcular a entropia para os
 subconjuntos $Clima=Ensolarado$, $Clima=Nublado$ e $Clima=Chuvoso$. As Tabelas
@@ -243,7 +243,7 @@ Nublado| Moderado| Alta| Forte| Sim
 Nublado| Quente| Normal| Fraco| Sim
 
 
-Table: Table: Subconjunto dos dados de treinamento para Clima=Chuvoso
+Table: Subconjunto dos dados de treinamento para Clima=Chuvoso
 
 Clima|Temperatura|Umidade|Vento|Jogar Tênis
 :-----:|:-----:|:-----:|:-----:|:-----:
@@ -396,7 +396,7 @@ onde os exemplos possuem apenas um valor para o rótulo. Entretanto, podem
 existir casos que mesmo após usar todos os atributos disponíveis nos dados de
 treinamento, ainda existam subconjuntos com exemplos com rótulos diferentes.
 Nesse caso, temos conjuntos que não podem ser mais divididos, o que os torna
-nós folha. A solução para esse problema é definir a decisão do nó folha como o
+nós folhas. A solução para esse problema é definir a decisão do nó folha como o
 rótulo que aparece na maioria dos exemplos do subconjunto.
 
 ### 6.2. Medida alternativa para selecionar atributos
@@ -432,7 +432,7 @@ A fórmula para calcular a razão de ganho é:
 
 $$RazãoDeGanho(S, A) = \frac{Ganho(S, A)}{SplitInfo(S, A)}$$
 
-$$SplitInfo(S, A) = \sum_{i=1}^{n}  \frac{|S_i|}{|S|} \log_2 \frac{|S_i|}{|S|}$$
+$$SplitInfo(S, A) = \sum_{i=1}^{n} - \frac{|S_i|}{|S|} \log_2 \frac{|S_i|}{|S|}$$
 
 Dado que o conjunto de exemplos $S$ tem $i$ valores para o atributo $A$, $S_i$
 é o subconjunto de $S$, onde $A = i$. Assim, quanto maior for o número de
@@ -508,7 +508,7 @@ e a entropia da segunda parte é:
 
 $$H = -(\frac{3}{4}) \log_2 (\frac{3}{4}) - (\frac{1}{4}) \log_2 (\frac{1}{4}) = 0,811$$
 
-Para finalizar, vamos calcular a fórmula do ganho de informação:
+Para finalizar, vamos calcular o ganho de informação:
 
 $$Ganho(Peso) = 1 - (\frac{|2|}{|6|} \cdot 0 + \frac{|4|}{|6|} \cdot 0,811)$$
 $$Ganho(Peso) = 0,46$$
@@ -519,13 +519,12 @@ Falso e nenhum verdadeiro. Calculando o ganho de informação temos $Ganho(Peso)
 = 0,191$.
 
 Dessa forma, concluímos que o limiar 56,5 é melhor nesse caso para dividir o
-conjunto da Tabela 5, pois o seu valor de ganho de informação é o maior. É
+conjunto da Tabela 5, pois o seu valor de ganho de informação é maior. É
 importante ressaltar que o limiar sempre deve ser reavaliado ao dividir um
 conjunto de exemplos durante a indução da árvore. Em pontos diferentes da
 árvore teremos conjuntos de exemplos distintos que poderão ter limiares
 diferentes para o maior ganho de informação.
 
-\  
 
 ## Referências
 
