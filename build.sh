@@ -1,8 +1,8 @@
 #!/bin/sh
 
-# cd resolucao-de-problemas
-# pandoc -f markdown+link_attributes --highlight-style=tango -V lang=pt-BR --template=../ianotes.latex  resolucao-de-problemas.md --latex-engine=pdflatex -o resolucao-de-problemas.pdf
-# cd ..
+cd resolucao-de-problemas
+pandoc -f markdown+link_attributes --highlight-style=tango -V lang=pt-BR --template=../ianotes.latex  resolucao-de-problemas.md --latex-engine=pdflatex -o resolucao-de-problemas.pdf
+cd ..
 
 cd planejamento
 pandoc -f markdown+link_attributes --highlight-style=tango -V lang=pt-BR --template=../ianotes.latex  planejamento.md --latex-engine=pdflatex -o planejamento.pdf
@@ -13,7 +13,7 @@ pandoc -f markdown+link_attributes --highlight-style=tango -V lang=pt-BR --templ
 cd ..
 
 cd aprendizagem-de-maquina
-pandoc -f markdown+link_attributes --highlight-style=tango -V lang=pt-BR --template=../ianotes.latex  aprendizagemdemaquina.md --latex-engine=pdflatex -o aprendizagemdemaquina.pdf
+pandoc -f markdown+link_attributes+footnotes --highlight-style=tango -V lang=pt-BR --template=../ianotes.latex  aprendizagemdemaquina.md --latex-engine=pdflatex -o aprendizagemdemaquina.pdf
 cd ..
 
 cd aprendizagem-de-maquina2

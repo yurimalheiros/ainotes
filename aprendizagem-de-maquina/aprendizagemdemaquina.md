@@ -19,7 +19,7 @@ problema, mas escreve um programa que tem a capacidade de aprender a resolver um
 problema desejado.
 
 <!-- desempenho melhor em várias tarefas -->
-Hoje em dia, a aprendizagem de máquina vem se destacando trazendo soluções para
+Hoje em dia, a aprendizagem de máquina vem se destacando, trazendo soluções para
 vários problemas complexos que historicamente as abordagens tradicionais não
 conseguiam resolver de maneira eficaz. Por exemplo, reconhecimento de
 caracteres escritos à mão, detecção de faces, filtro de spam, reconhecimento de
@@ -46,8 +46,11 @@ O vetor com todas as variáveis de entrada de uma casa é representado por $x^{(
 O preço da casa é uma **variável de saída**, também
 chamada de **resposta** ou **rótulo** em alguns casos, ela é representada por $y^{(i)}$.
 
-A Figura 1 mostra, para um conjunto de dados coletados, a relação entre o
-tamanho da casa e o preço e também entre a quantidade de quartos e o preço.
+A Figura 1 mostra, para um conjunto de dados coletados[^1], a relação entre o
+tamanho da casa e o preço, e também entre a quantidade de quartos e o preço.
+
+[^1]: http://people.sc.fsu.edu/~jburkardt/datasets/regression/x27.txt
+
 
 ![O gráfico de cima mostra o preço das casas (em milhares de dólares) de acordo com o seu tamanho (em milhares de *square feet*). O gráfico de baixo mostra o preço das casas de acordo com a quantidade de quartos.](casaspreco.png){ width=80% }
 
@@ -152,7 +155,7 @@ $(\hat{f}(x^{(2)}) - y^{(2)}) = 1$ e $(\hat{f}(x^{(3)}) - y^{(3)}) = -1$.
 
 Se as respostas previstas por $\hat{f}$ forem muito próximas das respostas
 reais, então os valores das diferenças $(\hat{f}(x^{(i)}) - y^{(i)})$ serão pequenos,
-portanto, o erro quadrático médio também será pequeno. Caso contrário, o valor
+portanto, o erro médio quadrático também será pequeno. Caso contrário, o valor
 do erro médio quadrático será alto. Assim, quanto menor o erro médio quadrático,
 mais ajustada a curva é aos dados, portanto, melhor a função descreve os dados.
 
@@ -205,7 +208,7 @@ A Figura 4 ilustra a variação dos erros para os dados de treinamento e para os
 dados de testes usando cada uma das funções da Figura 3. Podemos perceber que o
 erro usando os dados de treinamento diminui com o aumento da flexibilidade da
 função usada, por outro lado, para os dados de testes, o erro diminui até um
-certo ponto quando volta a subir. A curva vermelha da Figura 3 é um
+certo ponto, quando volta a subir. A curva vermelha da Figura 3 é um
 típico caso de superajuste. Das três funções apresentadas, a curva verde é a
 melhor nesse exemplo.
 
@@ -252,7 +255,7 @@ a média das distâncias de todos os pontos para a reta é a menor possível. Ou
 seja, a reta que minimiza o erro médio quadrático.
 
 Entretanto, na nossa abordagem para encontrar a função da reta, vamos fazer uma
-pequena modificação no cálculo do erro médio quadrático, a formula usada será: 
+pequena modificação no cálculo do erro médio quadrático, a fórmula usada será: 
 
 $$\frac{1}{2n} \sum_{i=1}^{n} (f(x^{(i)}) - y^{(i)})^2$$
 
@@ -288,7 +291,7 @@ convergência, ou seja, quando a variação do valor do erro médio quadrático 
 muito pequena ou inexistente.
 
 ![Na esquerda um ponto representando os valores aleatórios de $w_0$ e $w_1$
-escolhidos aleatoriamente no início do algoritmo da descida de gradiente. Na
+escolhidos no início do algoritmo da descida de gradiente. Na
 direita três passos do algoritmo, cada ponto após o primeiro representa valores
 ajustados do par $(w_0,w_1)$.](gd2.png){ width=100% }
 
@@ -375,10 +378,10 @@ gradiente.](gdevolucao.png){ width=75% }
 ## 5. Regressão linear com múltiplas variáveis
 
 <!-- podemos ter casos com mais de uma característica -->
-Para casos com mais de uma variável de entrada a regressão com uma variável não é suficiente.
+Para casos com mais de uma variável de entrada, a regressão com uma variável não é suficiente.
 Seguindo o exemplo dos preços das casas, mas agora considerando duas características para cada
 exemplo (tamanho e número de quartos), ajustar uma reta aos pontos não nos ajuda a prever
-respostas, já que os pontos agora estão num espaço tridimensional (Figura 9).
+respostas, já que os pontos estão num espaço tridimensional (Figura 9).
 
 <!-- gráfico 3d -->
 ![Gráfico das casas de acordo com o tamanho, número de quartos e preço.](casaspreco3d.png){ width=80% }
@@ -409,7 +412,7 @@ Isto nos ajudará em cálculos posteriores.
 
 $$x = \begin{bmatrix}
      x_0 \\
-     x_2 \\
+     x_1 \\
      ... \\
      x_n
      \end{bmatrix}$$
@@ -418,7 +421,7 @@ Além disso, os coeficientes da função também podem ser representados atravé
 
 $$w = \begin{bmatrix}
      w_0 \\
-     w_2 \\
+     w_1 \\
      ... \\
      w_n
      \end{bmatrix}$$
@@ -463,7 +466,7 @@ $$\frac{\partial}{\partial w_1} J(w) = \frac{1}{n} \sum_{i=1}^{n} ((f(x^{(i)}) -
 
 
 <!-- regra de atualização -->
-Para finalizar, o algoritmo de descida de gradiente deve ser executado da mesma forma que
+Para finalizar, o algoritmo de descida de gradiente deve ser executado da mesma forma
 especificada anteriormente para regressão com uma variável.
 
 A regra de atualização dos coeficientes é:
@@ -522,13 +525,12 @@ uma raiz, etc.
 A Figura 11 apresenta duas curvas encontradas usando os dados dos preços das casas de
 acordo com o seu tamanho. Na parte de cima temos uma curva do
 tipo: $f(x) = w_0 + w_1x^2$. Na parte de baixo temos outra curva, mas agora
-do tipo: $f(x) = w_3x^3 + w_2x^2 + w_1x + w_0$.
+do tipo: $f(x) = w_0 + w_1x + w_2x^2 + w_3x^3$.
 
 ![O gráfico de cima mostra o resultado da regressão polinomial para uma curva do tipo $f(x) = w_0 + w_1x^2$. O gráfico de baixo
-mostra o resultado para uma curva do tipo $f(x) = w_3x^3 + w_2x^2 + w_1x + w_0$.](regressaopoli.png){ width=80% }
+mostra o resultado para uma curva do tipo $f(x) = w_0 + w_1x + w_2x^2 + w_3x^3$.](regressaopoli.png){ width=80% }
 
 
-\  
 
 ## Referências
 
