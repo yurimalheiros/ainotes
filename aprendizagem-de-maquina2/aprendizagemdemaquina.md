@@ -7,7 +7,7 @@
 ## 1. Introdução
 
 <!-- o que é classificação -->
-Na aprendizagem de máquina supervisionada, os exemplos são compostos de um vetor de característica e uma resposta.
+Na aprendizagem de máquina supervisionada, os exemplos são compostos de um vetor característica e uma resposta.
 Essa resposta pode ter valores quantitativos (contínuos) ou qualitativos (discretos). Quando temos exemplos
 com respostas qualitativas, usamos algoritmos de classificação.
 
@@ -34,7 +34,7 @@ número de classes.
 
 Com respostas que variam entre os valores 0 e 1, não é adequado usar uma função
 linear para determinar a classificação de uma entrada, pois as respostas
-poderiam extrapolar os limites entre 0 e 1. Assim, na regressão logística, a
+poderiam extrapolar o intervalo de 0 até 1. Assim, na regressão logística, a
 função estimada que representa a hipótese para explicar os dados de treinamento
 é a função logística, que varia apenas entre 0 e 1.
 
@@ -45,7 +45,7 @@ $$\hat{f}(x) = g(w^Tx)$$
 $$g(z) = \frac{1}{1+e^{-z}}$$
 
 Note que continua-se usando $w^Tx$ como nas regressões linear e polinomial, mas
-o resultado é aplicado a função logística $g(z)$.
+o resultado é aplicado à função logística $g(z)$.
 
 A Figura 1 traz o gráfico da função logística. Perceba que quanto menor o valor
 de $z$, ou seja, o valor de $w^Tx$, mais próximo de zero é o resultado da
@@ -382,7 +382,7 @@ $$\hat{y} = \frac{1}{K}\sum_{j=1}^{K} y^{(j)}$$
 ### 4.3. K-D Trees
 
 <!-- - KNN pode ser lento (mostrar ordem de complexidade) -->
-Grande parte do processamento do algoritmo KNN é feito durante a classificação,
+Grande parte do processamento do algoritmo KNN é feita durante a classificação,
 pois para cada nova entrada é necessário comparar a sua distância com todos os
 exemplos de treinamento. Assim, a classificação tem complexidade
 $\mathcal{O}(N)$. Dependendo da quantidade de dados de treinamento, com a
@@ -702,7 +702,7 @@ ideia dessa técnica é supor que cada palavra foi vista nos dados de treinament
 uma vez a mais, ou seja, vamos adicionar 1 em todas as contagens. Além disso,
 na suavização vamos adicionar uma palavra "\<desconhecida\>" que vai representar
 qualquer palavra que não esteja presente nos dados de treinamento. Com essa estratégia,
-palavras que não existem terão probabilidades baixas, mas elas nãos serão zero.
+palavras que não existem terão probabilidades baixas, mas elas não serão zero.
 
 A Tabela 2 mostra as contagens das palavras sem suavização e com suavização de acordo
 com os dados de treinamento da Tabela 1.
