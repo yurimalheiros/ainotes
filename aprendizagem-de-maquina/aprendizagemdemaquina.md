@@ -216,7 +216,7 @@ melhor nesse exemplo.
 representa o erro usando os dados de treinamento.  Os quadrados representam as
 funções da Figura 3 de acordo com suas cores.](flexibilidade2.png){ width=60% }
 
-## 5. Regressão linear com uma variável
+## 6. Regressão linear com uma variável
 
 <!-- introdução -->
 A **regressão linear** é um método de aprendizagem de máquina supervisionada para
@@ -323,7 +323,7 @@ $$w_{temp1} := w_1 - \alpha \frac{\partial}{\partial w_1} J(w_0, w_1)$$
 $$w_0 := w_{temp0}$$
 $$w_1 := w_{temp1}$$
 
-### 5.1. Exemplo
+### 6.1. Exemplo
 
 Utilizando os dados do tamanho das casas e dos preços, vamos executar o algoritmo da descida de gradiente
 e analisar a evolução da reta e do valor do erro médio quadrático ao longo das iterações.
@@ -375,7 +375,7 @@ atualizados dos coeficientes naquela iteração.
 gradiente.](gdevolucao.png){ width=75% }
 
 
-## 5. Regressão linear com múltiplas variáveis
+## 7. Regressão linear com múltiplas variáveis
 
 <!-- podemos ter casos com mais de uma característica -->
 Para casos com mais de uma variável de entrada, a regressão com uma variável não é suficiente.
@@ -485,7 +485,7 @@ de quartos como variáveis de entrada pode ser visto na Figura 10.
 ![Gráfico com o plano gerado pela regressão linear múltipla](plano.png){ width=80% }
 
 
-## 6. Regressão polinomial
+## 8. Regressão polinomial
 
 <!-- O que é regressão polinomial -->
 Na regressão linear, tenta-se ajustar uma função, seja ela uma reta, um plano
