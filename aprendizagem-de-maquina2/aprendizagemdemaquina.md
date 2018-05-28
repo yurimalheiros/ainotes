@@ -362,7 +362,7 @@ Utilizando $K=3$, o algoritmo analisa os três vizinhos mais próximos, ou seja,
 ![Distâncias entre o ponto verde representando um exemplo de teste e todos os pontos dos dados de treinamento.](knn2.png){ width=80% }
 
 
-### 4.2. Respostas contínuas
+### 3.2. Respostas contínuas
 <!-- knn para respostas contínuas -->
 
 O KNN pode ser modificado para ser usado em problemas com respostas contínuas
@@ -379,7 +379,7 @@ $$\hat{y} = \frac{1}{K}\sum_{j=1}^{K} y^{(j)}$$
 
 
 
-### 4.3. K-D Trees
+### 3.3. K-D Trees
 
 <!-- - KNN pode ser lento (mostrar ordem de complexidade) -->
 Grande parte do processamento do algoritmo KNN é feita durante a classificação,
@@ -421,7 +421,7 @@ Table: Exemplos para geração da K-D Tree
 ![Exemplos para geração da K-D Tree representados num plano.](kdtree1.png){ width=65% }
 
 
-#### 4.3.1 Criando uma K-D Tree
+#### 3.3.1 Criando uma K-D Tree
 
 Para criar uma K-D Tree, começamos escolhendo uma das duas dimensões
 (características) para separar os nossos pontos em dois grupos, nesse exemplo,
@@ -461,7 +461,7 @@ cada grupo.
 ![K-D Tree gerada a partir dos exemplos da Tabela 2.](kdtree3.png){ width=70% }
 
 
-#### 4.3.2 Buscando vizinhos mais próximos
+#### 3.3.2 Buscando vizinhos mais próximos
 
 Com a K-D Tree criada, vamos buscar o vizinho mais próximo para um ponto de entrada, na explicação
 que segue, usaremos o ponto $(6,4)$.
