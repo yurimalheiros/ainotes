@@ -19,3 +19,7 @@ cd ..
 cd aprendizagem-de-maquina2
 pandoc -f markdown+link_attributes --highlight-style=tango -V lang=pt-BR --template=../ianotes.latex  aprendizagemdemaquina.md --pdf-engine=pdflatex -o aprendizagemdemaquina.pdf
 cd ..
+
+cd algoritmos-geneticos
+pandoc -f markdown+link_attributes --highlight-style=tango -V lang=pt-BR --template=../ianotes.latex  algoritmosgeneticos.md --pdf-engine=pdflatex -o algoritmosgeneticos.pdf
+cd ..
